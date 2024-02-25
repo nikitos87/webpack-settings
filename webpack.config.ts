@@ -18,6 +18,11 @@ export default (env: EnvVariables) => {
     entry: path.resolve(__dirname, "src", "index.tsx"),
     module: {
       rules: [
+        // порядок имеет значение - ВАЖНО!!!
+        {
+          test: /\.s[ac]ss$/i,
+          use: ["style-loader", "css-loader", "sass-loader"],
+        },
         {
           test: /\.tsx?$/,
           use: "ts-loader",
